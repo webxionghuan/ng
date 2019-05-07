@@ -1,0 +1,62 @@
+<!--
+  Generated template for the PayPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>pay</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <div style="background-color:rgba(0,0,0,0.5);height:50%;"></div>
+  <ion-grid>
+    <ion-row align-items-center>
+      <ion-col col-2>
+        <button ion-button clear (click)="closeModal()">
+          <ion-icon name="close"></ion-icon>
+        </button> 
+      </ion-col>
+      <ion-col style="text-align: center">
+        <h3>确认付款</h3>
+      </ion-col>
+      <ion-col col-2>
+        <button ion-button clear>
+          <ion-icon name="help"></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+        <ion-col style='text-align: center'>
+            <h3>$300</h3>
+        </ion-col>
+      </ion-row>
+    
+    <ion-row>
+      <ion-col>
+        支付账号
+      </ion-col>
+      <ion-col style="text-align:right">
+        kkk··@gmail.com
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>付款账号</ion-col>
+      <ion-col style="text-align:right">微信支付</ion-col>
+    </ion-row>
+   
+    <ion-row>
+        <ion-col>
+            <button ion-button block color="secondary" (click)="doPay()">支付</button>
+        </ion-col>
+      </ion-row>
+  </ion-grid>
+ 
+</ion-content>

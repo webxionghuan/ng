@@ -1,0 +1,66 @@
+<!--
+  Generated template for the CartPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>购物车</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding style="text-align: center">
+  <!--情况1：购物车是空的-->
+  <div *ngIf="cartList.length==0">
+    <img src="../../assets/img/404/404_img2.png">
+    <h2>购物车是空的</h2>
+    <button ion-button block color="secondary">逛逛去</button>
+  </div>
+
+  <!--情况2:购物车有商品-->
+  <div *ngIf="cartList.length>0">
+    <ion-list>
+      <ion-item *ngFor="let tmp of cartList;let myIndex=index">
+        <!-- 操作某一个商品的复选框：bianlicartList，执行与运算，将运算的结果赋值给isAllSelected -->
+        <ion-checkbox item-start [(ngModel)]="tmp.isSelected" (ngModelChange)="operateOne()"></ion-checkbox>
+        <ion-thumbnail item-end>
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <img src="../../assets/{{tmp.pic}}">
+              </ion-col> 
+              <ion-col>
+                <p>{{tmp.title}}</p>
+                <h4 style="color:red">{{tmp.price | currency:'CNY'}}</h4>
+                <button (click)="sub(myIndex)">-</button>
+                <span>{{tmp.count}}</span>
+                <button (click)="add(myIndex)">+</button>
+              </ion-col> 
+            </ion-row>
+          </ion-grid>
+        </ion-thumbnail>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-grid>
+    <ion-row align-items-center>
+      <ion-col col-1>
+        <!-- 处理全选操作之后的业务：每个商品的复选框的选中状态都与全选框保持一致 -->
+        <ion-checkbox  [(ngModel)]="isAllSelected" (ngModelChange)="operateAll()"></ion-checkbox>
+      </ion-col>
+      <ion-col col-5>
+        <span style="padding-left:0.2rem;margin-right:0.5rem">全选</span>  <span>合计</span><span>{{calcTotalPrice()}}</span>
+      </ion-col>
+      <ion-col col-6>
+        <button ion-button block color="danger" (click)="jump()">去结算</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>
